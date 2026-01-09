@@ -26,7 +26,7 @@ while True:
         wybor = input("Wybierz opcję: ")
 
         if wybor == "1":
-            print("1 dziala")
+            print("1 dzial")
             algorytm_wyszukiwania("ala ma kota","ma")
 
 
