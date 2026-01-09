@@ -1,42 +1,15 @@
-def algorytm_wyszukiwania(tekst,wzorzec):
+# This is a sample Python script.
 
-    tekstDlugosc=len(tekst)
-    wzorzecDlugosc=len(wzorzec)
-
-    #if wzorzecDlugosc>tekstDlugosc or wzorzecDlugosc==0:
-     #   return wynik
-
-    for i in range(tekstDlugosc):
-        if i + wzorzecDlugosc > tekstDlugosc:
-            break
-        j = 0
-        while j < wzorzecDlugosc and tekst[i + j] == wzorzec[j]:
-            j += 1
-        if j == wzorzecDlugosc:
-            wynik = tekst[0:i] + "[" + tekst[i:i+wzorzecDlugosc] + "]"
-            print(wynik)
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-
-while True:
-        print("=== MENU ===")
-        print("Wpisz '1', aby wyszukać wzorzec w tekście")
-        print("Wpisz '2', aby zakończyć program")
-
-        wybor = input("Wybierz opcję: ")
-
-        if wybor == "1":
-            print("1 dziala")
-            algorytm_wyszukiwania("ala ma kota","ma")
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-        elif wybor == "2":
-            print("Koniec programu")
-            break
-
-        else:
-            print("Nieprawidłowy wybór, spróbuj ponownie.")
-
-
-
-
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    print_hi('PyCharm')
+    print("dupa")
