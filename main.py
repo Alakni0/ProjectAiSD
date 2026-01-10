@@ -2,6 +2,10 @@ def algorytm_wyszukiwania(tekst,wzorzec):
 
     tekstDlugosc=len(tekst)
     wzorzecDlugosc=len(wzorzec)
+    ostatni = 0
+    wynik = ""
+    zielony = "\033[92m"
+    bialy = "\033[0m"
 
     if wzorzecDlugosc>tekstDlugosc or wzorzecDlugosc==0:
         print("Brak mozliwosci wyszukiwania")
@@ -13,9 +17,27 @@ def algorytm_wyszukiwania(tekst,wzorzec):
         j = 0
         while j < wzorzecDlugosc and tekst[i + j] == wzorzec[j]:
             j += 1
+
         if j == wzorzecDlugosc:
-            wynik = tekst[0:i] + "[" + tekst[i:i+wzorzecDlugosc] + "]"
+            wynik += tekst[ostatni:i] + zielony + tekst[i:i+wzorzecDlugosc] + bialy
             print(wynik)
+
+
+
+            while(True):
+                print("Czy chcesz kontynuować wyszukiwanie? (tak/nie)")
+                odpowiedz = input().strip().lower()
+                if odpowiedz == "tak":
+                    ostatni = i + wzorzecDlugosc
+                    break
+                elif odpowiedz == "nie":
+                    print("Koniec wyszukiwania. Twój wynik to: " + wynik)
+                    return
+                else:
+                    print("Nieprawidłowy wybór, spróbuj ponownie.")
+
+    print("Koniec wyszukiwania. Twój wynik to: " + wynik)
+
 
 def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
     tekstDlugosc = len(tekst)
@@ -66,8 +88,7 @@ while True:
         wybor = input("Wybierz opcję: ")
 
         if wybor == "1":
-            print("1 dzial")
-            algorytm_wyszukiwania("ala ma kota","ma")
+            algorytm_wyszukiwania("ala ma kota i ma psa","ma")
             print(algorytm_wyszukiwania_indeksy("ala ma kota i ma psa","ma"))
             kolorowanie_wzorcow("ala ma kota i ma psa","ma")
 
