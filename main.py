@@ -36,7 +36,7 @@ def algorytm_wyszukiwania(tekst,wzorzec):
                 else:
                     print("Nieprawidłowy wybór, spróbuj ponownie.")
 
-    print("Koniec wyszukiwania. Twój wynik to: " + wynik)
+    print("Koniec wyszukiwania. Twój wynik to: " + wynik + tekst[ostatni:tekstDlugosc])
 
 
 def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
