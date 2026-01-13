@@ -48,8 +48,7 @@ def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
         print("Brak mozliwosci wyszukiwania")
         return indeksy
 
-    for i in range(tekstDlugosc-wzorzecDlugosc+1):  #ostatnia pozycja do sprawdzania to tekstDlugosc-wzorzecDlugosc
-                                                    #range konczy na jednym miejscu przed koncem dlatego +1
+    for i in range(tekstDlugosc-wzorzecDlugosc+1):
         for j in range(wzorzecDlugosc):
             if tekst[i+j] != wzorzec[j]:
                 break
@@ -99,26 +98,44 @@ def kolorowanie_wzorcow(tekst, wzorzec):
 while True:
         print("\n=== MENU ===")
         print("Wpisz '1', aby wyszukać wzorzec w tekście")
-        print("Wpisz '2', aby zakończyć program")
+        print("Wpisz '2', aby zobaczyć przykładowe działanie algorytmu")
+        print("Wpisz '3', aby zakończyć program")
 
         wybor = input("Wybierz opcję: ")
 
         if wybor == "1":
-            algorytm_wyszukiwania("ala ma kota i ma psa","ma")
+            while True:
+                tekst = input("Wprowadź tekst: ")
+                wzorzec = input("Wprowadź wzorzec do wyszukania: ")
 
+                if tekst == "":
+                    print("Tekst nie może być pusty. Spróbuj ponownie.")
+                    continue
+                if wzorzec == "":
+                    print("Wzorzec nie może być pusty. Spróbuj ponownie.")
+                    continue
+                if len(wzorzec) > len(tekst):
+                    print("Wzorzec nie może być dłuższy niż tekst. Spróbuj ponownie.")
+                    continue
+                break
 
-            print(algorytm_wyszukiwania_indeksy("ala ma kota i ma psa","ma"))
-            kolorowanie_wzorcow("ala ma kota i ma psa","ma")
-
-            #wydajnosc i skutecznosc algorytmu sprawdzic na dobrze dobranych przypadkach tekstowych jak i rzeczywistych tekstach
+            algorytm_wyszukiwania(tekst, wzorzec)
+            print()
+            kolorowanie_wzorcow(tekst, wzorzec)
 
         elif wybor == "2":
+            tekst = "ala ma kota i ma psa"
+            wzorzec = "ma"
+
+            algorytm_wyszukiwania(tekst, wzorzec)
+            print()
+            indeksy = algorytm_wyszukiwania_indeksy(tekst, wzorzec)
+            print("Znalezione indeksy:", indeksy)
+            kolorowanie_wzorcow(tekst, wzorzec)
+
+        elif wybor == "3":
             print("Koniec programu")
             break
 
         else:
             print("Nieprawidłowy wybór, spróbuj ponownie.")
-
-
-
-
