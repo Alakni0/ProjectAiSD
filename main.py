@@ -42,7 +42,7 @@ def algorytm_wyszukiwania(tekst,wzorzec):
 def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
     tekstDlugosc = len(tekst)
     wzorzecDlugosc = len(wzorzec)
-    indeksy = [] #indeksy na ktorych znaleziono wzorzec
+    indeksy = []
 
     if wzorzecDlugosc > tekstDlugosc or wzorzecDlugosc == 0:
         print("Brak mozliwosci wyszukiwania")
@@ -61,22 +61,38 @@ def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
 def kolorowanie_wzorcow(tekst, wzorzec):
     indeksy = algorytm_wyszukiwania_indeksy(tekst, wzorzec)
     wzorzecDlugosc = len(wzorzec)
-    koniec = 0 #slaba nazwa
+    ostatni = 0
     wynik = ""
 
-    ZIELONE_TLO = "\033[42m"
-    RESET = "\033[0m"
+    zielony = "\033[92m"
+    reset = "\033[0m"
 
-    for indeks in indeksy:
-        wynik += tekst[koniec:indeks]
-        wynik += ZIELONE_TLO + tekst[indeks:indeks + wzorzecDlugosc] + RESET
-        koniec = indeks + wzorzecDlugosc
+    for i in indeksy:
+        wynik += tekst[ostatni:i]
+        wynik += zielony + tekst[i:i + wzorzecDlugosc] + reset
 
-    wynik += tekst[koniec:]
+        print(wynik)
+
+        while True:
+            print("Czy chcesz kontynuować wyszukiwanie? (tak/nie)")
+            odpowiedz = input().strip().lower()
+            if odpowiedz == "tak":
+                ostatni = i + wzorzecDlugosc
+                break
+            elif odpowiedz == "nie":
+                print("Koniec wyszukiwania. Twój wynik to:")
+                print(wynik + tekst[ostatni:])
+                return
+            else:
+                print("Nieprawidłowy wybór, spróbuj ponownie.")
+
+    wynik += tekst[ostatni:]
+    print("Koniec wyszukiwania. Twój wynik to:")
     print(wynik)
 
 
 
+#metody ktore sprawdzaja wydajnosc algorytmu dodac tutaj
 
 
 
@@ -89,9 +105,12 @@ while True:
 
         if wybor == "1":
             algorytm_wyszukiwania("ala ma kota i ma psa","ma")
+
+
             print(algorytm_wyszukiwania_indeksy("ala ma kota i ma psa","ma"))
             kolorowanie_wzorcow("ala ma kota i ma psa","ma")
 
+            #wydajnosc i skutecznosc algorytmu sprawdzic na dobrze dobranych przypadkach tekstowych jak i rzeczywistych tekstach
 
         elif wybor == "2":
             print("Koniec programu")
