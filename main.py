@@ -45,7 +45,6 @@ def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
     indeksy = []
 
     if wzorzecDlugosc > tekstDlugosc or wzorzecDlugosc == 0:
-        print("Brak mozliwosci wyszukiwania")
         return indeksy
 
     for i in range(tekstDlugosc-wzorzecDlugosc+1):
@@ -59,6 +58,11 @@ def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
 
 def kolorowanie_wzorcow(tekst, wzorzec):
     indeksy = algorytm_wyszukiwania_indeksy(tekst, wzorzec)
+
+    if len(indeksy) == 0:
+        print("Nie znaleziono wzorca w tekście.")
+        return
+
     wzorzecDlugosc = len(wzorzec)
     ostatni = 0
     wynik = ""
