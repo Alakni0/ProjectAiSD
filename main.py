@@ -83,7 +83,7 @@ def kolorowanie_wzorcow(tekst, wzorzec):
     ostatni = 0
     wynik = ""
 
-    zielony = "\033[92m"
+    zielony = "\033[42m"
     reset = "\033[0m"
 
     for i in indeksy:
