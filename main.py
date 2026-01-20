@@ -1,55 +1,3 @@
-import time
-
-
-def algorytm_wyszukiwania(tekst,wzorzec):
-    start1 = time.perf_counter()
-    tekstDlugosc=len(tekst)
-    wzorzecDlugosc=len(wzorzec)
-
-    ostatni = 0
-    wynik = ""
-
-    zielony = "\033[92m"
-    bialy = "\033[0m"
-
-    znaleziono = 0
-
-    i = 0
-
-    while  i <= tekstDlugosc - wzorzecDlugosc:
-        j = 0
-        while j < wzorzecDlugosc and tekst[i + j] == wzorzec[j]:
-            j += 1
-
-        if j == wzorzecDlugosc:
-            wynik += tekst[ostatni:i] + zielony + tekst[i:i+wzorzecDlugosc] + bialy
-            znaleziono += 1
-            ostatni = i + wzorzecDlugosc
-            i += wzorzecDlugosc
-            print(wynik)
-            while(True):
-
-                koniec1 = time.perf_counter()
-                print("Czas wykonania algorytmu:", koniec1 - start1, "sekundy")
-                print("Czy chcesz kontynuować wyszukiwanie? (tak/nie)")
-                odpowiedz = input().strip().lower()
-                if odpowiedz == "tak":
-                    ostatni = i + wzorzecDlugosc
-                    break
-                elif odpowiedz == "nie":
-                    print("Koniec wyszukiwania. Twój wynik to: " + wynik)
-                    return
-                else:
-                    print("Nieprawidłowy wybór, spróbuj ponownie.")
-        else:
-            i += 1
-
-    if(znaleziono == 0):
-        print("Nie znaleziono wzorca w tekście.")
-        return
-    print("Koniec wyszukiwania. Twój wynik to: " + wynik + tekst[ :tekstDlugosc])
-
-
 def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
     tekstDlugosc = len(tekst)
     wzorzecDlugosc = len(wzorzec)
@@ -68,12 +16,7 @@ def algorytm_wyszukiwania_indeksy(tekst,wzorzec):
     return indeksy
 
 def kolorowanie_wzorcow(tekst, wzorzec):
-    start2 = time.perf_counter()
-
     indeksy = algorytm_wyszukiwania_indeksy(tekst, wzorzec)
-
-    koniec2 = time.perf_counter()
-    czas_wykonania = koniec2 - start2
 
     if len(indeksy) == 0:
         print("Nie znaleziono wzorca w tekście.")
@@ -97,8 +40,6 @@ def kolorowanie_wzorcow(tekst, wzorzec):
         print(wynik)
 
         while True:
-            koniec2 = time.perf_counter()
-            print("Czas wykonania algorytmu:", czas_wykonania, "sekundy")
             print("Czy chcesz kontynuować wyszukiwanie? (tak/nie)")
             odpowiedz = input().strip().lower()
             if odpowiedz == "tak":
@@ -115,20 +56,12 @@ def kolorowanie_wzorcow(tekst, wzorzec):
     print(wynik)
 
 
-
-
-
-
 while True:
         print("\n=== MENU ===")
         print("Wpisz '1', aby wyszukać wzorzec w tekście")
         print("Wpisz '2', aby zobaczyć przykładowe działanie algorytmu")
         print("Wpisz '3', aby zakończyć program")
 
-        if ('a' == 'A'):
-            print ("Test to samo")
-        else:
-            print ("Test różne")
 
         wybor = input("Wybierz opcję: ")
 
@@ -151,8 +84,6 @@ while True:
                     continue
                 break
 
-          #  algorytm_wyszukiwania(tekst, wzorzec)
-           # print()
             kolorowanie_wzorcow(tekst, wzorzec)
 
         elif wybor == "2":
@@ -162,8 +93,6 @@ while True:
             print("Tekst:", tekst)
             print("Wzorzec:", wzorzec)
 
-#            algorytm_wyszukiwania(tekst, wzorzec)
-            #print()
             kolorowanie_wzorcow(tekst, wzorzec)
 
             print("\n2. Najlepszy przypadek")
@@ -173,8 +102,6 @@ while True:
             print("Tekst:", tekst)
             print("Wzorzec:", wzorzec)
 
-    #        algorytm_wyszukiwania(tekst, wzorzec)
-          #  print()
             kolorowanie_wzorcow(tekst, wzorzec)
 
             print("\n3. Najgorszy przypadek")
@@ -184,8 +111,6 @@ while True:
             print("Tekst:", tekst)
             print("Wzorzec:", wzorzec)
 
-       #     algorytm_wyszukiwania(tekst, wzorzec)
-         #   print()
             kolorowanie_wzorcow(tekst, wzorzec)
 
         elif wybor == "3":
