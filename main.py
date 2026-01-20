@@ -79,7 +79,7 @@ while True:
                 if len(wzorzec) > len(tekst):
                     print("Wzorzec nie może być dłuższy niż tekst. Spróbuj ponownie.")
                     continue
-                if len(tekst) > 50_000:
+                if len(tekst) > 1_000:
                     print("Tekst za długi.")
                     continue
                 break
